@@ -27,7 +27,7 @@ function windowResized() {
 function setup() {
   createCanvas(windowWidth, windowHeight);
   frameRate(random(5, 60));
-  background(0);
+  background(5);
   rectMode(CENTER);
   choice = random(colore);
   
