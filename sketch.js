@@ -21,7 +21,7 @@ let y;
 let dec; //decibel
 
 let r, g, b, alpha;
-let min = 100;
+let min = 150;
 
 let waveForm = ['sine', 'sine2', 'sine3', 'triangle', 'triangle8', 'sine4', 'square'];
 
