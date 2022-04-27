@@ -1,3 +1,7 @@
+let baseURLImage = 'https://oscaraccorsi.github.io/pictures/';
+let logo;
+let xLogo;
+
 const osc = new Tone.Oscillator();
 const pingPong = new Tone.PingPongDelay().toDestination();
 const rev = new Tone.Reverb().toDestination;
@@ -16,6 +20,9 @@ let x = 60;
 let y;
 let dec; //decibel
 
+let r, g, b, alpha;
+let min = 150;
+
 let waveForm = ['sine', 'sine2', 'sine3', 'triangle', 'triangle8', 'sine4', 'square'];
 
 //----------------------------------------------------
@@ -23,13 +30,24 @@ function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
 }
 
+//--------------------------------------------preload
+function preload() {
+  logo = loadImage(baseURLImage + 'good one white.png');
+}
+
 //----------------------------------------------------
 function setup() {
   createCanvas(windowWidth, windowHeight);
   frameRate(random(5, 60));
-  background(5);
+  xLogo = windowWidth-40;
+  //background(150);
   rectMode(CENTER);
   choice = random(colore);
+  r= round(random(0, 255));
+  g= round(random(0, 255));
+  b= round(random(0, 255));
+  alpha= round(random(0, 255));
+  noStroke();
   
   //----------------------------------------ping pong
   pingPong.Time = random(time);  
@@ -69,35 +87,10 @@ function draw() {
 
 //----------------------------------------color functions
 function rndBlu() {
-  fill(0, 0, random(0, 255));  
+  fill(0, 0, b);
+  b= round(random(0, 255));
+  if (b < min) {
+    noFill();
+  }
 }
 function rndRed() {
-  fill(random(0, 255), 0, 0);  
-}
-function rndGreen() {
-  fill(0, random(0, 255),0);  
-}
-function rndMulti() {
-  fill(255, 255, 255, random(0, 255));
-}
-
-//-----------------------------------------reset sketch
-function resetSketch() {
-  
-  osc.frequency.value = fr;
-  dec = random(-40, -12);
-  fr = random(110, 220);
-  low = random(30, 110);
-  x += 80;
-  console.log(osc.type, pingPong.Time, pingPong.NormalRange);
-  
-  if (x >= width-60) {
-    x = 60;
-    background(0);
-    osc.type = random(waveForm);
-    choice = random(colore);
-    frameRate(random(5, 60));
-    pingPong.Time = random(time);
-    pingPong.NormalRange = random(feed); 
-  }  
-}
