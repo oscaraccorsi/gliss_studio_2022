@@ -21,7 +21,7 @@ let y;
 let dec; //decibel
 
 let r, g, b, alpha;
-let min = 150;
+let min = 100;
 
 let waveForm = ['sine', 'sine2', 'sine3', 'triangle', 'triangle8', 'sine4', 'square'];
 
@@ -43,10 +43,10 @@ function setup() {
   //background(150);
   rectMode(CENTER);
   choice = random(colore);
-  r= round(random(0, 255));
-  g= round(random(0, 255));
-  b= round(random(0, 255));
-  alpha= round(random(0, 255));
+  r= round(random(min, 255));
+  g= round(random(min, 255));
+  b= round(random(min, 255));
+  alpha= round(random(min, 255));
   noStroke();
   
   //----------------------------------------ping pong
@@ -88,29 +88,29 @@ function draw() {
 //----------------------------------------color functions
 function rndBlu() {
   fill(0, 0, b);
-  b= round(random(0, 255));
-  if (b < min) {
+  b= round(random(min, 255));
+  if (b < min+50) {
     noFill();
   }
 }
 function rndRed() {
   fill(r, 0, 0); 
-  r= round(random(0, 255));
-  if (r < min) {
+  r= round(random(min, 255));
+  if (r < min+50) {
     noFill();
   }
 }
 function rndGreen() {
   fill(0, g, 0);
-  g= round(random(0, 255));
-  if (g < min) {
+  g= round(random(min, 255));
+  if (g < min+50) {
     noFill();
   }
 }
 function rndMulti() {
   fill(alpha);
-  alpha= round(random(0, 255));
-  if (alpha < min) {
+  alpha= round(random(min, 255));
+  if (alpha < min+50) {
     noFill();
   }
 }
