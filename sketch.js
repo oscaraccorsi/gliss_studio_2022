@@ -40,7 +40,7 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   frameRate(random(5, 60));
   xLogo = windowWidth-40;
-  //background(150);
+  background(15);
   rectMode(CENTER);
   choice = random(colore);
   r= round(random(min, 255));
@@ -129,7 +129,7 @@ function resetSketch() {
     //save();
     clear();
     x = 60;
-    //background(0);
+    background(15);
     osc.type = random(waveForm);
     choice = random(colore);
     frameRate(random(5, 60));
@@ -144,5 +144,5 @@ function mousePressed() {
   image(logo, xLogo, windowHeight-25);
   tint(200); 
   save();
-  clear();
+  background(15);
 }
