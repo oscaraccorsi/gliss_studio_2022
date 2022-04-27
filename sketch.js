@@ -94,3 +94,55 @@ function rndBlu() {
   }
 }
 function rndRed() {
+  fill(r, 0, 0); 
+  r= round(random(0, 255));
+  if (r < min) {
+    noFill();
+  }
+}
+function rndGreen() {
+  fill(0, g, 0);
+  g= round(random(0, 255));
+  if (g < min) {
+    noFill();
+  }
+}
+function rndMulti() {
+  fill(alpha);
+  alpha= round(random(0, 255));
+  if (alpha < min) {
+    noFill();
+  }
+}
+
+//-----------------------------------------reset sketch
+function resetSketch() {
+  
+  osc.frequency.value = fr;
+  dec = random(-40, -12);
+  fr = random(110, 220);
+  low = random(30, 110);
+  x += 80;
+  //console.log(osc.type, pingPong.Time, pingPong.NormalRange);
+  
+  if (x >= width-60) {
+    //save();
+    clear();
+    x = 60;
+    //background(0);
+    osc.type = random(waveForm);
+    choice = random(colore);
+    frameRate(random(5, 60));
+    pingPong.Time = random(time);
+    pingPong.NormalRange = random(feed); 
+  }  
+}
+//-------------------------------------------mousePressed
+function mousePressed() {
+  imageMode(CENTER);
+  logo.resize(40, 0);
+  image(logo, xLogo, windowHeight-25);
+  tint(200); 
+  save();
+  clear();
+}
